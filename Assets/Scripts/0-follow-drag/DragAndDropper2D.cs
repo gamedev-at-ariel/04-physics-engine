@@ -15,23 +15,23 @@ public class DragAndDropper2D: MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnMouseDown() {
+        isPressed = true;
+        rb.isKinematic = true;  // make the rigid body non-dynamic 
+    }
+
     void Update() {
         if (isPressed) {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Vector3.Distance(mousePos, hook.position) > maxDragDistance)
-                rb.position = hook.position + (mousePos - hook.position).normalized * maxDragDistance;
-            else
+            if (Vector2.Distance(mousePos, hook.position) <= maxDragDistance)
                 rb.position = mousePos;
+            else
+                rb.position = hook.position + (mousePos - hook.position).normalized * maxDragDistance;
         }
-    }
-
-    private void OnMouseDown() {
-        isPressed = true;
-        rb.isKinematic = true;
     }
 
     private void OnMouseUp() {
         isPressed = false;
-        rb.isKinematic = false;
+        rb.isKinematic = false; // make the rigid body dynamic again
     }
 }

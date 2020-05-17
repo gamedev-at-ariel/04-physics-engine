@@ -1,18 +1,16 @@
-# Unity week 4: Physics engine - forces, effectors, joints
+# Unity week 5: Scene building, tilemaps and path-finding
 
-A project with step-by-step scenes illustrating the physics engine of Unity,
-including character controller, rigid body, forces, effectors and joints.
-
-Text explanations are available 
-[here](https://github.com/erelsgl-at-ariel/gamedev-5780) in folder 08.
+A project with step-by-step scenes illustrating how to construct a scene using tilemaps,
+and how to do path-finding.
 
 ## Credits
 
+Graphics:
+* [Ultima 4 Graphics](https://github.com/jahshuwaa/u4graphics) by Joshua Steele.
+
+Online course:
+* [Unity 2D](https://www.udemy.com/course/unitycourse/learn/lecture/10246496), a Udemy course by Gamedev.tv.
+
 Programming:
-* Maoz Grossman
-* Michael Lemberger
 * Erel Segal-Halevi
 
-## Online courses:
-
-* [Unity 2019](https://www.udemy.com/the-ultimate-guide-to-game-development-with-unity/), by Jonathan Weinberger.
