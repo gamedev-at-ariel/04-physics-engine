@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
  * This component lets the player push the ball.
  */
 public class BasketballBall: MonoBehaviour {
-    [SerializeField] float forceToAdd = 1300f;
+    [SerializeField] float forceSize = 30f;
     [SerializeField] float timeFromHittingTheFloorToRestart = 2f;
 
     private Rigidbody2D rb;
@@ -33,8 +33,8 @@ public class BasketballBall: MonoBehaviour {
     void OnMouseUp() {
         rb.isKinematic = false;
         endPosition = GetMouseAsWorldPoint();
-        Vector3 forceVector = (endPosition - startPosition).normalized;
-        rb.AddForce(forceVector * forceToAdd);
+        Vector3 forceDirection = (endPosition - startPosition).normalized;
+        rb.AddForce(forceDirection * forceSize, ForceMode2D.Impulse);
     }
 
     private Vector3 GetMouseAsWorldPoint() {
