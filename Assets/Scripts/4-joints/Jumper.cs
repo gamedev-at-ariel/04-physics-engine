@@ -4,7 +4,8 @@
  * This component allows the player to jump by clicking Space.
  */
 public class Jumper: MonoBehaviour {
-    [SerializeField] float jumpForce = 6.5f;
+    [SerializeField] float jumpForceX = 0;
+    [SerializeField] float jumpForceY = 6.5f;
 
     private Rigidbody2D rb;
     void Start() {
@@ -18,7 +19,7 @@ public class Jumper: MonoBehaviour {
     }
 
     public void Jump() {
-        Vector3 up = new Vector3(0, 1f, 0);//transform.TransformDirection(Vector3.up);
-        rb.AddForce(up * jumpForce, ForceMode2D.Impulse);
+        Vector3 up = new Vector3(jumpForceX, jumpForceY, 0);
+        rb.AddForce(up, ForceMode2D.Impulse);
     }
 }
