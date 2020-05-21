@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aba88faa0cd7db4da5f099f553eff90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcePerFrame: 10
+  forceSize: 5
 --- !u!1 &1510607902
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,10 +863,10 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 0
+    min: -45
+    max: 45
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
