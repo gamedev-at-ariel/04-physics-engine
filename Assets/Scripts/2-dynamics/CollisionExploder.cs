@@ -8,7 +8,7 @@ using UnityEngine;
  */
 [RequireComponent(typeof(Rigidbody2D))]
 public class CollisionExploder: MonoBehaviour {
-    [SerializeField] float minVelocityForExplosion = 1.0f;
+    [SerializeField] float minImpulseForExplosion = 1.0f;
     [SerializeField] GameObject explosionEffect = null;
     [SerializeField] float explosionEffectTime = 0.68f;
 
@@ -18,9 +18,10 @@ public class CollisionExploder: MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log(gameObject.name + " collides with "+ collision.collider.name 
-            + " at velocity " + rb.velocity + " [m/s]");
-        if (rb.velocity.magnitude > minVelocityForExplosion) {
+        float impulse = collision.relativeVelocity.magnitude * rb.mass;
+        Debug.Log(gameObject.name + " collides with " + collision.collider.name
+            + " at velocity " + collision.relativeVelocity + " [m/s], impulse "+ impulse+" [kg*m/s]");
+        if (impulse > minImpulseForExplosion) {
             StartCoroutine(Explosion());
         }
     }
