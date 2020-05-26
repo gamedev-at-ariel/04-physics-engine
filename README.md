@@ -13,6 +13,5 @@ Programming:
 * Michael Lemberger
 * Erel Segal-Halevi
 
-## Online courses:
-
+Online courses:
 * [Unity 2019](https://www.udemy.com/the-ultimate-guide-to-game-development-with-unity/), by Jonathan Weinberger.
