@@ -6,18 +6,29 @@
  */
 [RequireComponent(typeof(Rigidbody))]
 public class RigidBodyDebugger: MonoBehaviour {
+
+    [SerializeField] int fontSize = 16;
+    [SerializeField] Color textColor = Color.black;
+
     private Rigidbody rb;
+    private float startTime;
+
     private void Start() {
         rb = GetComponent<Rigidbody>();
+        startTime = Time.time;
     }
-    void OnGUI()  {
-        GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
-        fontSize.fontSize = 16;
-        fontSize.normal.textColor = Color.black;
-        GUI.Label(new Rect(25, 0, 200, 50), "Is sleeping?: " + rb.IsSleeping(), fontSize);
-        GUI.Label(new Rect(25, 25, 200, 50), "Is kinematic?: " + rb.isKinematic, fontSize);
-        GUI.Label(new Rect(25, 50, 200, 50), "Use Gravity?: " + rb.useGravity, fontSize);
-        GUI.Label(new Rect(25, 75,300, 50), "Velocity: (x=" + rb.velocity.x.ToString("F2")+" ,y="+rb.velocity.y.ToString("F2")+" ,z="+rb.velocity.z.ToString("F2")+")", fontSize);
+
+void OnGUI()  {
+        GUIStyle fontStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+        fontStyle.fontSize = fontSize;
+        fontStyle.normal.textColor = textColor;
+        GUI.Label(new Rect(25, 0, 200, 50), "Is sleeping?: " + rb.IsSleeping(), fontStyle);
+        GUI.Label(new Rect(25, 25, 200, 50), "Is kinematic?: " + rb.isKinematic, fontStyle);
+        GUI.Label(new Rect(25, 50, 200, 50), "Use Gravity?: " + rb.useGravity, fontStyle);
+
+        GUI.Label(new Rect(25, 75, 300, 50), "LinearSpeed: " + rb.velocity.ToString("F2"), fontStyle);
+        GUI.Label(new Rect(25, 100, 300, 50), "AngularSpeed: " + rb.angularVelocity.ToString("F2"), fontStyle);
+        GUI.Label(new Rect(25, 125, 300, 50), "Time: " + (Time.time - startTime).ToString("F2"), fontStyle);
     }
 
 }

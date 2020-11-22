@@ -641,6 +641,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.23973083
       objectReference: {fileID: 0}
+    - target: {fileID: 8654613728598315736, guid: 77e7aa10f03b1494e91955a45cf7114d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8654613728598315737, guid: 77e7aa10f03b1494e91955a45cf7114d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -704,6 +709,11 @@ PrefabInstance:
     - target: {fileID: 8654613728598315739, guid: 77e7aa10f03b1494e91955a45cf7114d,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654613728598315739, guid: 77e7aa10f03b1494e91955a45cf7114d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1624,6 +1634,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682446335916220183, guid: b295a50a3e205884d9e746e346dcfd18,
+        type: 3}
+      propertyPath: frictionAcceleration
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5682446335916220188, guid: b295a50a3e205884d9e746e346dcfd18,
         type: 3}

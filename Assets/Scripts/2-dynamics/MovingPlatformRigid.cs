@@ -9,8 +9,8 @@ public class MovingPlatformRigid: MonoBehaviour {
     [SerializeField] float speed = 1f;
 
     private bool moveFromStartToEnd = true;
-    Rigidbody rb;
 
+    private Rigidbody rb;
     private void Start() {
         rb = GetComponent<Rigidbody>();
     }

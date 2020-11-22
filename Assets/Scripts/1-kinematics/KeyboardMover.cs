@@ -26,8 +26,14 @@ public class KeyboardMover: MonoBehaviour {
     [Tooltip("Vertical speed immediately after jumping, in meters per second")]
     [SerializeField] float jumpSpeed = 20.0f;
 
+    [Tooltip("A speed of a standing character towards Earth, in order to activate the colliders")]
+    [SerializeField] float standSpeed = -0.0001f;
+
+
     [Range(0, 1f)]
     [SerializeField] float slowDownAtJump = 0.5f;
+
+    [SerializeField] KeyCode keyToJump = KeyCode.Space;
 
     [Header("These fields are for display only")]
     [SerializeField] Vector3 velocity;
@@ -50,16 +56,16 @@ public class KeyboardMover: MonoBehaviour {
     void Update() {
         if (!controller.enabled) return;
         isGrounded = (controller.collisionFlags & CollisionFlags.Below) != 0;
-
+       
         if (isGrounded) {  // character is touching the ground - allow to walk and jump.
             velocity.x += DeltaVelocityWalking();
 
             // Jumping:
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(keyToJump)) {
                 velocity.y = jumpSpeed;
                 velocity.x *= slowDownAtJump;   // decrease horizontal velocity when jumping - for better control
             } else {
-                velocity.y = -0.0001f;  // a small negative velocity, to keep the character grounded 
+                velocity.y = standSpeed;  // a small negative velocity, to keep the character grounded 
             }
 
         } else {  // Character is above the ground - accelerate downwards.

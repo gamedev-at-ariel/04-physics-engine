@@ -451,17 +451,17 @@ SliderJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.35, y: 0.37938583}
+  m_ConnectedAnchor: {x: -0.32, y: 0.46}
   m_AutoConfigureAngle: 1
-  m_Angle: -92.043915
+  m_Angle: -90
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 2
     m_MaximumMotorForce: 30
   m_UseLimits: 1
   m_TranslationLimits:
-    m_LowerTranslation: -2.33
-    m_UpperTranslation: 2.04
+    m_LowerTranslation: -3.6
+    m_UpperTranslation: 5.45
 --- !u!1 &482425704
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686ca114afebe764f98c53898146454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForceX: 0
+  jumpForceY: 6.5
 --- !u!1 &1888919816
 GameObject:
   m_ObjectHideFlags: 0

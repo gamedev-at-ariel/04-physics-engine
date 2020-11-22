@@ -7,14 +7,16 @@
  */
 [RequireComponent(typeof(Rigidbody))]
 public class DragAndDropper3D: MonoBehaviour {
-    private Vector3 positionMinusMouse;
-    private float screenZCoordinate;
+
+    [Header("These fields are for display only")]
+    [SerializeField] private Vector3 positionMinusMouse;
+    [SerializeField] private float screenZCoordinate;
 
     private Rigidbody rb;
     private void Start() {
         rb = GetComponent<Rigidbody>();
     }
-
+    
     // This function is called when the player clicks the collider of this object.
     void OnMouseDown() {
         if (!rb.IsSleeping()) return;  // Do not allow the player to drag the object when it is moving.

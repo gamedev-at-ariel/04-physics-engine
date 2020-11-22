@@ -20,29 +20,16 @@ public class KeyboardForceAdder : MonoBehaviour {
     [SerializeField] int touchingColliders = 0;
 
     private Rigidbody rb;
-    private int groundLayer;
     void Start() {
         rb = GetComponent<Rigidbody>();
-        groundLayer = LayerMask.NameToLayer("Ground");
-        if (groundLayer==-1) {
-            throw new MissingReferenceException("No Ground layer!");
-        }
     }
 
     private ForceMode walkForceMode = ForceMode.Force;
     private ForceMode jumpForceMode = ForceMode.Impulse;
-    // ForceMode.Force:           velocity += (forceSize/mass)*Time.deltaTime
-    // ForceMode.Acceleration:    velocity += (forceSize)*Time.deltaTime
-    // ForceMode.Impulse:         velocity += (forceSize/mass)
-    // ForceMode.VelocityChange:  velocity += (forceSize)
 
     private void OnCollisionEnter(Collision collision) {
         touchingColliders++;
     }
-
-    /*private void OnCollisionStay(Collision collision) {
-        isGrounded = true;
-    }*/
 
     private void OnCollisionExit(Collision collision) {
         touchingColliders--;
@@ -75,9 +62,9 @@ public class KeyboardForceAdder : MonoBehaviour {
             bool playerWantsToJump = Input.GetKey(KeyCode.Space);
             // WARNING: Do not use GetKeyDown:
             //bool playerWantsToJump = Input.GetKeyDown(KeyCode.Space);
-            // Since it is active only once per frame, and FixedUpdate may not run in that frame!
+            if (playerWantsToJump) {            // Since it is active only once per frame, and FixedUpdate may not run in that frame!
 
-            if (playerWantsToJump) {
+
                 rb.velocity *= slowDownAtJump;  
                 rb.AddForce(new Vector3(0, jumpForce, 0), jumpForceMode);
             }
