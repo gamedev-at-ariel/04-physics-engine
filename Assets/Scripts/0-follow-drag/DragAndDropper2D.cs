@@ -22,11 +22,11 @@ public class DragAndDropper2D: MonoBehaviour {
 
     void Update() {
         if (isPressed) {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Vector2.Distance(mousePos, hook.position) <= maxDragDistance)
-                rb.position = mousePos;
+            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Vector2.Distance(mouseWorldPosition, hook.position) <= maxDragDistance)
+                rb.position = mouseWorldPosition;
             else
-                rb.position = hook.position + (mousePos - hook.position).normalized * maxDragDistance;
+                rb.position = hook.position + (mouseWorldPosition - hook.position).normalized * maxDragDistance;
         }
     }
 
