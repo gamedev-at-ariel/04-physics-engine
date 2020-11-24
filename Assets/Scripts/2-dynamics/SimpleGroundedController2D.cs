@@ -1,0 +1,54 @@
+﻿using UnityEngine;
+
+
+/**
+ * This component allows a character to move and jump, but only when touching the ground.
+ * 
+ * SOURCE: Unity examples:
+ * https://github.com/Unity-Technologies/PhysicsExamples2D/blob/master/Assets/Scripts/SceneSpecific/Miscellaneous/SimpleGroundedController.cs
+ */
+[RequireComponent(typeof(Rigidbody2D))]
+public class SimpleGroundedController2D: MonoBehaviour {
+    [SerializeField] float JumpImpulse = 7f;
+    [SerializeField] float SideSpeed = 2f;
+
+    public ContactFilter2D ContactFilter;
+
+    private Rigidbody2D m_Rigidbody;
+    private bool m_ShouldJump;
+    private float m_SideSpeed;
+
+    // We can check to see if there are any contacts given our contact filter
+    // which can be set to a specific layer and normal angle.
+    public bool IsGrounded => m_Rigidbody.IsTouching(ContactFilter);
+
+    void Start()
+    {
+        m_Rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        // Set jump/
+        if (Input.GetKeyDown(KeyCode.Space))
+            m_ShouldJump = true;
+
+        // Set movement.
+        m_SideSpeed = (Input.GetKey(KeyCode.LeftArrow) ? -SideSpeed : 0f) + (Input.GetKey(KeyCode.RightArrow) ? SideSpeed : 0f);
+    }
+
+    void FixedUpdate()
+    {
+        // Handle jump.
+        // NOTE: If instructed to jump, we'll check if we're grounded.
+        if (m_ShouldJump && IsGrounded)
+            m_Rigidbody.AddForce(Vector2.up * JumpImpulse, ForceMode2D.Impulse);
+
+        // Set sideways velocity.
+        m_Rigidbody.velocity = new Vector2(m_SideSpeed, m_Rigidbody.velocity.y);
+
+        // Reset movement.
+        m_ShouldJump = false;
+        m_SideSpeed = 0f;
+    }
+}

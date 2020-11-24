@@ -55,9 +55,7 @@ public class KeyboardMover: MonoBehaviour {
 
     void Update() {
         if (!controller.enabled) return;
-        isGrounded = (controller.collisionFlags & CollisionFlags.Below) != 0;
-       
-        if (isGrounded) {  // character is touching the ground - allow to walk and jump.
+        if (controller.isGrounded) {  // character is touching the ground - allow to walk and jump.
             velocity.x += DeltaVelocityWalking();
 
             // Jumping:

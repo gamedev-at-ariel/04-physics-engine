@@ -1496,6 +1496,7 @@ GameObject:
   - component: {fileID: 1274443639}
   - component: {fileID: 1274443645}
   - component: {fileID: 1274443644}
+  - component: {fileID: 1274443647}
   - component: {fileID: 1274443643}
   m_Layer: 9
   m_Name: Player
@@ -1591,10 +1592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61d99a3faa957e4a9b05854e92ce5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkForce: 20
-  jumpForce: 15
-  slowDownAtJump: 0.6
-  touchingColliders: 0
+  walkForce: 25
+  jumpImpulse: 20
+  slowDownAtJump: 0.5
 --- !u!136 &1274443644
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1625,6 +1625,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1274443647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274443638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ea34bf379eab0438806cb25b2b5625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  touchingColliders: 0
 --- !u!1 &1281674450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,4 +2103,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 948037858}
   endPoint: {fileID: 348912086}
-  speed: 2
+  speed: 3
