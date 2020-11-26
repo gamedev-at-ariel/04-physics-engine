@@ -11,6 +11,7 @@ public class KeyboardMover: MonoBehaviour {
     [Header("Horizontal movement")]
 
     [SerializeField] float maxSpeed = 10.0f;
+    [SerializeField] float minSpeedForFriction = 1f;
 
     [Tooltip("Horizontal acceleration when clicking the arrows, in meters per second^2")]
     [SerializeField] float feetAcceleration = 100.0f;
@@ -39,6 +40,7 @@ public class KeyboardMover: MonoBehaviour {
     [SerializeField] Vector3 velocity;
     [SerializeField] bool isGrounded;
 
+
     void Start() {
         controller = GetComponent<CharacterController>();
         velocity = new Vector3(0, 0, 0);    // in meters per second
@@ -46,31 +48,41 @@ public class KeyboardMover: MonoBehaviour {
 
     private float DeltaVelocityWalking() {
         float accelerationX = Input.GetAxis("Horizontal") * feetAcceleration;
-        accelerationX -= Mathf.Sign(velocity.x) * frictionAcceleration;
+        if (velocity.x>minSpeedForFriction)
+            accelerationX -= frictionAcceleration;
+        else if (velocity.x < -minSpeedForFriction)
+            accelerationX += frictionAcceleration;
         float deltaVelocityX = accelerationX * Time.deltaTime;
         if (Mathf.Abs(velocity.x + deltaVelocityX) > maxSpeed)
             deltaVelocityX = 0;
         return deltaVelocityX;
     }
 
+    private bool playerWantsToJump;
     void Update() {
         if (!controller.enabled) return;
-        if (controller.isGrounded) {  // character is touching the ground - allow to walk and jump.
-            velocity.x += DeltaVelocityWalking();
 
-            // Jumping:
-            if (Input.GetKeyDown(keyToJump)) {
+        if (Input.GetKeyDown(keyToJump))
+            playerWantsToJump = true;
+
+        isGrounded = controller.isGrounded;
+        if (isGrounded) {  // character is touching the ground - allow to walk and jump.
+            velocity.x += DeltaVelocityWalking();
+            if (Mathf.Abs(velocity.x) < minSpeedForFriction)
+                velocity.x = 0;
+            if (playerWantsToJump) {
                 velocity.y = jumpSpeed;
                 velocity.x *= slowDownAtJump;   // decrease horizontal velocity when jumping - for better control
+                playerWantsToJump = false;
             } else {
                 velocity.y = standSpeed;  // a small negative velocity, to keep the character grounded 
             }
-
         } else {  // Character is above the ground - accelerate downwards.
             float deltaVelocityY = gravityAcceleration * Time.deltaTime;
             velocity.y += deltaVelocityY;
         }
 
-        controller.Move(velocity * Time.deltaTime);
+        var deltaX = velocity * Time.deltaTime;
+        controller.Move(deltaX);
     }
 }

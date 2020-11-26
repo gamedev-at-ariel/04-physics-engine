@@ -12,10 +12,11 @@ public class MovingPlatform : MonoBehaviour {
     bool moveFromStartToEnd = true;
 
     void FixedUpdate() {
+        float deltaX = speed * Time.fixedDeltaTime;
         if (moveFromStartToEnd) {
-            transform.position = Vector3.MoveTowards(transform.position, endPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, endPoint.position, deltaX);
         } else {  // move from end to start
-            transform.position = Vector3.MoveTowards(transform.position, startPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, startPoint.position, deltaX);
         }
 
         if (transform.position == startPoint.position) {
