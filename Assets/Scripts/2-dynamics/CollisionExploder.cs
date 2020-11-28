@@ -18,6 +18,8 @@ public class CollisionExploder: MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
+        // In 3D, the Collision object contains an .impulse field.
+        // In 2D, the Collision2D object does not contain it - so we have to compute it.
         float impulse = collision.relativeVelocity.magnitude * rb.mass;
         Debug.Log(gameObject.name + " collides with " + collision.collider.name
             + " at velocity " + collision.relativeVelocity + " [m/s], impulse "+ impulse+" [kg*m/s]");
