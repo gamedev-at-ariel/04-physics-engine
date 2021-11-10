@@ -10,11 +10,14 @@ public class KeyboardMover: MonoBehaviour {
 
     [Header("Horizontal movement")]
 
-    [SerializeField] float maxSpeed = 10.0f;
-    [SerializeField] float minSpeedForFriction = 1f;
-
     [Tooltip("Horizontal acceleration when clicking the arrows, in meters per second^2")]
     [SerializeField] float feetAcceleration = 100.0f;
+
+    [Tooltip("Largest horizontal speed that the character can attain, in meters per second.")]
+    [SerializeField] float maxSpeed = 10.0f;
+
+    [Tooltip("If the speed is at least this value, the character will be slowed down by friction.")]
+    [SerializeField] float minSpeedForFriction = 1f;
 
     [Tooltip("Horizontal acceleration of friction, against the direction of movement, in meters per second^2")]
     [SerializeField] float frictionAcceleration = 20.0f;
@@ -31,6 +34,7 @@ public class KeyboardMover: MonoBehaviour {
     [SerializeField] float standSpeed = -0.0001f;
 
 
+    [Tooltip("The factor by which the character's horizontal speed is decreased when it jumps.")]
     [Range(0, 1f)]
     [SerializeField] float slowDownAtJump = 0.5f;
 
@@ -65,8 +69,7 @@ public class KeyboardMover: MonoBehaviour {
         if (Input.GetKeyDown(keyToJump))
             playerWantsToJump = true;
 
-        isGrounded = controller.isGrounded;
-        if (isGrounded) {  // character is touching the ground - allow to walk and jump.
+        if (controller.isGrounded) {  // character is touching the ground - allow to walk and jump.
             velocity.x += DeltaVelocityWalking();
             if (Mathf.Abs(velocity.x) < minSpeedForFriction)
                 velocity.x = 0;
@@ -82,7 +85,7 @@ public class KeyboardMover: MonoBehaviour {
             velocity.y += deltaVelocityY;
         }
 
-        var deltaX = velocity * Time.deltaTime;
-        controller.Move(deltaX);
+        var deltaPosition = velocity * Time.deltaTime;
+        controller.Move(deltaPosition);
     }
 }

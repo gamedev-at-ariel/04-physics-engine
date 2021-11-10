@@ -32,16 +32,6 @@ public class TouchDetector : MonoBehaviour {
     public bool IsTouching() {
         // See https://answers.unity.com/questions/196381/how-do-i-check-if-my-rigidbody-player-is-grounded.html
         // and https://gamedev.stackexchange.com/questions/105399/how-to-check-if-grounded-with-rigidbody
-        /*
-        Vector3 topCenter = collider.bounds.center;
-        topCenter.y = collider.bounds.max.y - collider.radius;
-        Vector3 bottomCenter = collider.bounds.center;
-        bottomCenter.y = collider.bounds.min.y + collider.radius;
-        Debug.Log("topCenter " + topCenter + "  bottomCenter " + bottomCenter + "  radius " + collider.radius*2);
-        return Physics.CheckCapsule(topCenter, bottomCenter, collider.radius, Physics.AllLayers);
-        //float groundMargin = 0.1f;
-        //return Physics.Raycast(transform.position, Vector3.down, collider.bounds.extents.y+groundMargin);
-        */
         return touchingColliders>0;
     }
 }

@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- *  This component moves its object back and forth between two points in space.
+ *  This component moves its object in a fixed speed back and forth between two points in space.
  */
 public class MovingPlatform : MonoBehaviour {
-    [Tooltip("The points between which the platform moves")] [SerializeField] Transform startPoint=null, endPoint = null;
+    [Tooltip("The points between which the platform moves")]
+    [SerializeField] Transform startPoint=null, endPoint = null;
+
     [SerializeField] float speed = 1f;
 
     bool moveFromStartToEnd = true;
+
+    private void Start() {
+        transform.position = startPoint.position;
+    }
 
     void FixedUpdate() {
         float deltaX = speed * Time.fixedDeltaTime;
@@ -31,7 +37,7 @@ public class MovingPlatform : MonoBehaviour {
             other.transform.parent = this.transform;
         }
     }
-
+    
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.GetComponent<KeyboardMover>()) {
             other.transform.parent = null;

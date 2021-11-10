@@ -16,7 +16,7 @@ public class SimpleGroundedController3D : MonoBehaviour {
     private Rigidbody rigidBody;
     private TouchDetector touchDetector;
     private bool playerWantsToJump;
-    private float sideSpeed;
+    private float horizontalSpeed;
 
     void Start() {
         rigidBody = GetComponent<Rigidbody>();
@@ -28,7 +28,7 @@ public class SimpleGroundedController3D : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))   
             playerWantsToJump = true;
 
-        sideSpeed = Input.GetAxis("Horizontal") * SideSpeed;
+        horizontalSpeed = Input.GetAxis("Horizontal") * SideSpeed;
     }
 
     void FixedUpdate()  {
@@ -37,11 +37,11 @@ public class SimpleGroundedController3D : MonoBehaviour {
         if (playerWantsToJump && touchDetector.IsTouching())
             rigidBody.AddForce(Vector3.up * JumpImpulse, ForceMode.Impulse);
 
-        // Set sideways velocity.
-        rigidBody.velocity = new Vector3(sideSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+        // Set horizontal velocity.
+        rigidBody.velocity = new Vector3(horizontalSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
 
         // Reset movement.
         playerWantsToJump = false;
-        sideSpeed = 0f;
+        horizontalSpeed = 0f;
     }
 }

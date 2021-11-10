@@ -11,7 +11,7 @@ public class DragAndDropper3D: MonoBehaviour {
     [Header("These fields are for display only")]
     [SerializeField] private Vector3 positionMinusMouse;
     [SerializeField] private float screenZCoordinate;
-
+    
     private Rigidbody rb;
     private void Start() {
         rb = GetComponent<Rigidbody>();

@@ -19,6 +19,6 @@ public class ForceAdder: MonoBehaviour {
 
     private void FixedUpdate() {
         rb.AddForce (new Vector3(0,0,forceSize), forceMode);
-        rb.AddTorque(new Vector3(0, 0, torqueSize), torqueMode);
+        rb.AddTorque(new Vector3(0,0,torqueSize), torqueMode);
     }
 }

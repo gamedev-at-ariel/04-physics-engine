@@ -5,7 +5,9 @@
  */
 [RequireComponent(typeof(Rigidbody))]
 public class MovingPlatformRigid: MonoBehaviour {
-    [Tooltip("The points between which the platform moves")] [SerializeField] Transform startPoint = null, endPoint = null;
+    [Tooltip("The points between which the platform moves")]
+    [SerializeField] Transform startPoint = null, endPoint = null;
+
     [SerializeField] float speed = 1f;
 
     private bool moveFromStartToEnd = true;
