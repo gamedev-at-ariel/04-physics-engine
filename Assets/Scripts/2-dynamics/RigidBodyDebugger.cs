@@ -26,14 +26,14 @@ public class RigidBodyDebugger: MonoBehaviour {
         fontStyle.fontSize = fontSize;
         fontStyle.normal.textColor = textColor;
         int width = fontSize * widthLetters;
-        int lineHeight = (int)(fontSize * 1.2);
-        GUI.Label(new Rect(xLeft, 0,           width, fontSize), "Is sleeping?: " + rb.IsSleeping(), fontStyle);
-        GUI.Label(new Rect(xLeft, 1* lineHeight, width, fontSize), "Is kinematic?: " + rb.isKinematic, fontStyle);
-        GUI.Label(new Rect(xLeft, 2* lineHeight, width, fontSize), "Use Gravity?: " + rb.useGravity, fontStyle);
+        int lineHeight = (int)(fontSize * 1.5);
+        GUI.Label(new Rect(xLeft, 0,           width, lineHeight), "Is sleeping?: " + rb.IsSleeping(), fontStyle);
+        GUI.Label(new Rect(xLeft, 1* lineHeight, width, lineHeight), "Is kinematic?: " + rb.isKinematic, fontStyle);
+        GUI.Label(new Rect(xLeft, 2* lineHeight, width, lineHeight), "Use Gravity?: " + rb.useGravity, fontStyle);
 
-        GUI.Label(new Rect(xLeft, 3* lineHeight, width, fontSize), "LinearSpeed: " + rb.velocity.ToString("F2"), fontStyle);
-        GUI.Label(new Rect(xLeft, 4* lineHeight, width, fontSize), "AngularSpeed: " + rb.angularVelocity.ToString("F2"), fontStyle);
-        GUI.Label(new Rect(xLeft, 5* lineHeight, width, fontSize), "Time: " + (Time.time - startTime).ToString("F2"), fontStyle);
+        GUI.Label(new Rect(xLeft, 3* lineHeight, width, lineHeight), "LinearSpeed: " + rb.velocity.ToString("F2"), fontStyle);
+        GUI.Label(new Rect(xLeft, 4* lineHeight, width, lineHeight), "AngularSpeed: " + rb.angularVelocity.ToString("F2"), fontStyle);
+        GUI.Label(new Rect(xLeft, 5* lineHeight, width, lineHeight), "Time: " + (Time.time - startTime).ToString("F2"), fontStyle);
     }
 
 }

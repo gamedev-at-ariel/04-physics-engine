@@ -10,6 +10,7 @@ TagManager:
   - boundery
   - Score
   - Moon
+  - Ground
   layers:
   - Default
   - TransparentFX

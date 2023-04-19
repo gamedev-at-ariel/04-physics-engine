@@ -9,7 +9,7 @@ using UnityEngine;
 public class BereshitController: MonoBehaviour {
     [SerializeField] float distanceToStartSlowdown = 0;
     [SerializeField] float dragForceForSlowdown = 0;
-
+    
     private Rigidbody2D rb;
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +17,7 @@ public class BereshitController: MonoBehaviour {
 
     /* To prevent explosion - send a ray to the moon and "drag" the spaceship when the moon is nearby: */
     private void FixedUpdate() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity);
+        RaycastHit2D hit = Physics2D.Raycast(origin:  transform.position, direction: Vector2.down, distance: Mathf.Infinity);
         if (hit.collider != null && hit.distance <= distanceToStartSlowdown) {  // If there is an object sufficiently close to the spaceship -
             rb.drag = dragForceForSlowdown;      // Add drag, to slow down the spaceship.
         }

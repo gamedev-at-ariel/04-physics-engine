@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /**
  *  This component moves its object in a fixed speed back and forth between two points in space.
@@ -18,6 +16,7 @@ public class MovingPlatform : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        // If Update is used, the player does not move with the platform.
         float deltaX = speed * Time.fixedDeltaTime;
         if (moveFromStartToEnd) {
             transform.position = Vector3.MoveTowards(transform.position, endPoint.position, deltaX);
