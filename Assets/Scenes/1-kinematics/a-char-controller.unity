@@ -1177,7 +1177,31 @@ MonoBehaviour:
     m_Id: 140a58f3-de54-4f91-8978-51398e46d32b
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 1DAxis
+      m_Id: ff989e26-a95f-4aae-a406-dcd4e74260fb
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Horizontal
+      m_Flags: 4
+    - m_Name: Positive
+      m_Id: cbb921cc-73fa-4787-b498-89a039354e32
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Horizontal
+      m_Flags: 8
+    - m_Name: Negative
+      m_Id: b21865fa-1075-4d5b-b008-91f512b57b2c
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Horizontal
+      m_Flags: 8
     m_Flags: 0
 --- !u!23 &1274443640
 MeshRenderer:

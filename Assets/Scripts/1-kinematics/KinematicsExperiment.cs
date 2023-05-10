@@ -47,6 +47,7 @@ public class KinematicsExperiment : MonoBehaviour
     }
     */
 
+
     private void OnCollisionEnter(Collision c) {
         if (c.collider.name == "Ground") {
             isTouchingTheGround = true;
@@ -67,6 +68,7 @@ public class KinematicsExperiment : MonoBehaviour
             Debug.Log("Player wants to jump");
             playerWantsToJump = true;
         }
+        // Debug.Log(Time.deltaTime);
     }
 
     private void FixedUpdate() {
@@ -79,8 +81,10 @@ public class KinematicsExperiment : MonoBehaviour
         if (isTouchingTheGround && velocity.y <= 0) {
             velocity = Vector3.zero;
         } else {
-            velocity += acceleration * Time.fixedDeltaTime;
+            Vector3 deltaV = acceleration * Time.fixedDeltaTime;
+            velocity += deltaV;
         }
-        transform.position += velocity * Time.fixedDeltaTime;
+        Vector3 detlaX = velocity * Time.fixedDeltaTime;
+        transform.position += detlaX;
     }
 }

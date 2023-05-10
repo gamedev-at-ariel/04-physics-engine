@@ -96,7 +96,7 @@ public class KeyboardMover : MonoBehaviour
     }
 
     void Update() {
-        if (!controller.enabled) return;
+        if (!controller.enabled) return;    
         controllerIsGrounded = controller.isGrounded;
         if (controllerIsGrounded) {  // character is touching the ground - allow to walk and jump.
             velocity.x += DeltaVelocityWalking();
