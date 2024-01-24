@@ -25,29 +25,6 @@ public class KinematicsExperiment : MonoBehaviour
         jump.Disable();
     }
 
-    /*
-     * bool IsTouchingTheGround() {
-        RaycastHit hit;
-        float maxDistanceToGround = 0.1f;
-        Vector3 legs = GetComponent<Collider>().bounds.min;
-        bool isTouchingTheGround = Physics.Raycast(
-            origin: legs,
-            direction: Vector3.down,
-            out hit,
-            layerMask: 1 << LayerMask.NameToLayer("Ground"),
-            maxDistance: maxDistanceToGround);
-        if (isTouchingTheGround && velocity.y <= 0) {
-            Debug.Log("Touching the ground: " + hit.collider.name);
-            Debug.DrawRay(legs, Vector3.down * hit.distance, Color.white);
-        } else {
-            Debug.Log("Not touching the ground");
-            Debug.DrawRay(legs, Vector3.down * maxDistanceToGround, Color.red);
-        }
-        return isTouchingTheGround;
-    }
-    */
-
-
     private void OnCollisionEnter(Collision c) {
         if (c.collider.name == "Ground") {
             isTouchingTheGround = true;
@@ -59,7 +36,6 @@ public class KinematicsExperiment : MonoBehaviour
             isTouchingTheGround = false;
         }
     }
-
 
     bool playerWantsToJump = false;
     void Update() {
