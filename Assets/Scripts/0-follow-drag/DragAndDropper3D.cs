@@ -35,7 +35,7 @@ public class DragAndDropper3D: MonoBehaviour {
     void OnMouseUp() {
         rb.isKinematic = false;
     }
-
+        
     private Vector3 MousePositionOnWorld() {
         Vector3 mouseOnScreen = Input.mousePosition;    // Screen coordinates of mouse (x,y)
         mouseOnScreen.z = screenZCoordinate;            // z coordinate of game object on screen

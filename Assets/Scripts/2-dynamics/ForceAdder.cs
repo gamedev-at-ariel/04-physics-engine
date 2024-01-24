@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /**
  *  This component automatically adds force and torque to its object.
@@ -18,6 +16,8 @@ public class ForceAdder: MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        // NOTE: When you work with a physical rigid body,
+        //       all changes to the rigid body should be in FixedUpdate!
         rb.AddForce (new Vector3(0,0,forceSize), forceMode);
         rb.AddTorque(new Vector3(0,0,torqueSize), torqueMode);
     }

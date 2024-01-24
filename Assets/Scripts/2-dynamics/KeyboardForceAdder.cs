@@ -46,12 +46,6 @@ public class KeyboardForceAdder : MonoBehaviour {
     private ForceMode walkForceMode = ForceMode.Force;
     private ForceMode jumpForceMode = ForceMode.Impulse;
     private bool playerWantsToJump = false;
-
-    private void Update() {
-        // Keyboard events are checked each frame, so we should check them in Update.
-        if (jump.WasPressedThisFrame())
-            playerWantsToJump = true;
-    }
     private void OnEnable() {
         moveHorizontal.Enable();
         jump.Enable();
@@ -60,6 +54,12 @@ public class KeyboardForceAdder : MonoBehaviour {
     private void OnDisable() {
         moveHorizontal.Disable();
         jump.Disable();
+    }
+
+    private void Update() {
+        // Keyboard events are checked each frame, so we should check them in Update.
+        if (jump.WasPressedThisFrame())
+            playerWantsToJump = true;
     }
 
     /*
