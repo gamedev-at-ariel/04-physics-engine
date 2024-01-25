@@ -58,7 +58,7 @@ public class KeyboardForceAdder : MonoBehaviour {
 
     private void Update() {
         // Keyboard events are checked each frame, so we should check them in Update.
-        if (jump.WasPressedThisFrame())
+        if (jump.WasPressedThisFrame() && td.IsTouching())
             playerWantsToJump = true;
     }
 

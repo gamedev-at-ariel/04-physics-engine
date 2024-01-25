@@ -44,6 +44,6 @@ public class KeyboardHorizontalMover: MonoBehaviour {
     void Update() {
         if (!controller.enabled) return;
         velocity.x = speed * moveHorizontal.ReadValue<float>();
-        controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * Time.deltaTime);  // deltaX
    }
 }

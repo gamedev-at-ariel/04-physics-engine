@@ -495,6 +495,18 @@ MonoBehaviour:
   slowDownAtJump: 0.5
   velocity: {x: 0, y: 0, z: 0}
   controllerIsGrounded: 0
+--- !u!114 &171654371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171654352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9fa71e8958261a449e0dd0cbf3cd1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &174448347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,6 +1691,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 171654365}
+    - targetCorrespondingSourceObject: {fileID: 5682446335916220188, guid: b295a50a3e205884d9e746e346dcfd18,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 171654371}
     - targetCorrespondingSourceObject: {fileID: 5682446334395104142, guid: b295a50a3e205884d9e746e346dcfd18,
         type: 3}
       insertIndex: -1
