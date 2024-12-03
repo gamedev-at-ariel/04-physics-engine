@@ -37,12 +37,12 @@ public class AngryBird: MonoBehaviour {
 
     private void OnMouseDown() {
         isMousePressed = true;
-        rb.isKinematic = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     private void OnMouseUp() {
         isMousePressed = false;
-        rb.isKinematic = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         StartCoroutine(ReleaseBall());
     }
 

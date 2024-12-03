@@ -7,11 +7,11 @@
 public class DragAndDropper2DAlternative: MonoBehaviour {
     private bool drag;                  // True if is being dragged
 
-    private bool wasKinematic;          // Flag indicating whether or not the Ridigbody
-    private Rigidbody2D rb;    // Reference to the GameObject's Rigidbody2D
+    private RigidbodyType2D previousBodyType;         
+    private Rigidbody2D rb;                       // Reference to the GameObject's Rigidbody2D
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        wasKinematic = rb.isKinematic;
+        previousBodyType = rb.bodyType;
     }
 
     void Update() {
@@ -22,14 +22,14 @@ public class DragAndDropper2DAlternative: MonoBehaviour {
 
     void OnMouseDown() {
         drag = true;
-        rb.isKinematic = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     // Checks if the mouse button is released
     void OnMouseUp() {
         // Update flags
         if (drag == true)
-            rb.isKinematic = wasKinematic;
+            rb.bodyType = previousBodyType;
         drag = false;
     }
 

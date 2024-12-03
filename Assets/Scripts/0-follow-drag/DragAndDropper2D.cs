@@ -17,7 +17,7 @@ public class DragAndDropper2D: MonoBehaviour {
 
     private void OnMouseDown() {
         isPressed = true;
-        rb.isKinematic = true;  // make the rigid body non-dynamic 
+        rb.bodyType = RigidbodyType2D.Kinematic;  // make the rigid body non-dynamic 
     }
 
     void Update() {
@@ -32,6 +32,6 @@ public class DragAndDropper2D: MonoBehaviour {
 
     private void OnMouseUp() {
         isPressed = false;
-        rb.isKinematic = false; // make the rigid body dynamic again
+        rb.bodyType = RigidbodyType2D.Dynamic; // make the rigid body dynamic again
     }
 }

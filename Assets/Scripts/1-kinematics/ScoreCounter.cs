@@ -16,7 +16,7 @@ public class ScoreCounter: MonoBehaviour {
         scoreText = transform.Find("Score").GetComponent<TextMeshPro>();
         SetScore(0);
     }
-
+    
     private void SetScore(int s) {
         score = s;
         scoreText.text = score.ToString();

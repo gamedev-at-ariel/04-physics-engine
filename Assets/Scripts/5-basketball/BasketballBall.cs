@@ -22,7 +22,7 @@ public class BasketballBall: MonoBehaviour {
 
     void OnMouseDown() {
         sj.enabled = false;
-        rb.isKinematic = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         startPosition = GetMouseAsWorldPoint();
     }
 
@@ -31,7 +31,7 @@ public class BasketballBall: MonoBehaviour {
     }
 
     void OnMouseUp() {
-        rb.isKinematic = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         endPosition = GetMouseAsWorldPoint();
         Vector3 forceDirection = (endPosition - startPosition).normalized;
         rb.AddForce(forceDirection * forceSize, ForceMode2D.Impulse);
