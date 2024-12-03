@@ -19,7 +19,7 @@ public class BereshitController: MonoBehaviour {
     private void FixedUpdate() {
         RaycastHit2D hit = Physics2D.Raycast(origin:  transform.position, direction: Vector2.down, distance: Mathf.Infinity);
         if (hit.collider != null && hit.distance <= distanceToStartSlowdown) {  // If there is an object sufficiently close to the spaceship -
-            rb.drag = dragForceForSlowdown;      // Add drag, to slow down the spaceship.
+            rb.linearDamping = dragForceForSlowdown;      // Add drag, to slow down the spaceship.
         }
 
         // To see the Gizmo of the ray in the Scene view:

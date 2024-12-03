@@ -31,7 +31,7 @@ public class RigidBodyDebugger: MonoBehaviour {
         GUI.Label(new Rect(xLeft, 1* lineHeight, width, lineHeight), "Is kinematic?: " + rb.isKinematic, fontStyle);
         GUI.Label(new Rect(xLeft, 2* lineHeight, width, lineHeight), "Use Gravity?: " + rb.useGravity, fontStyle);
 
-        GUI.Label(new Rect(xLeft, 3* lineHeight, width, lineHeight), "LinearSpeed: " + rb.velocity.ToString("F2"), fontStyle);
+        GUI.Label(new Rect(xLeft, 3* lineHeight, width, lineHeight), "LinearSpeed: " + rb.linearVelocity.ToString("F2"), fontStyle);
         GUI.Label(new Rect(xLeft, 4* lineHeight, width, lineHeight), "AngularSpeed: " + rb.angularVelocity.ToString("F2"), fontStyle);
         GUI.Label(new Rect(xLeft, 5* lineHeight, width, lineHeight), "Time: " + (Time.time - startTime).ToString("F2"), fontStyle);
     }

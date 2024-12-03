@@ -38,7 +38,7 @@ public class SimpleGroundedController3D : MonoBehaviour {
             rigidBody.AddForce(Vector3.up * JumpImpulse, ForceMode.Impulse);
 
         // Set horizontal velocity.
-        rigidBody.velocity = new Vector3(horizontalSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+        rigidBody.linearVelocity = new Vector3(horizontalSpeed, rigidBody.linearVelocity.y, rigidBody.linearVelocity.z);
 
         // Reset movement.
         playerWantsToJump = false;
