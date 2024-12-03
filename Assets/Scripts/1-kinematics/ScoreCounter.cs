@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 /**
@@ -7,13 +8,16 @@ using UnityEngine;
  */
 public class ScoreCounter: MonoBehaviour {
     CharacterController characterController;
+
     [SerializeField] int scorePerCoin = 1;
 
     private TextMeshPro scoreText;
     private int score = 0;
 
     void Start() {
-        scoreText = transform.Find("Score").GetComponent<TextMeshPro>();
+        var scoreChild = transform.Find("Score");
+        if (!scoreChild) throw new Exception("No child with name Score!");
+        scoreText = scoreChild.GetComponent<TextMeshPro>();
         SetScore(0);
     }
     

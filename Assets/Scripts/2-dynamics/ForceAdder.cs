@@ -5,8 +5,11 @@
  */
 [RequireComponent(typeof(Rigidbody))]
 public class ForceAdder: MonoBehaviour {
+    [Tooltip("Constant force that acts on the object, in Newtons (kg*m/s^2)")]
     [SerializeField] float forceSize = 10f;
     [SerializeField] ForceMode forceMode = ForceMode.Force;
+
+    [Tooltip("Constant torque (rotational force) that acts on the object")]
     [SerializeField] float torqueSize = 10f;
     [SerializeField] ForceMode torqueMode = ForceMode.Force;
 

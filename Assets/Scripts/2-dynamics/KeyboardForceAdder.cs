@@ -12,7 +12,7 @@ public class KeyboardForceAdder : MonoBehaviour {
     [SerializeField] float walkForce = 5f;
     [SerializeField] InputAction moveHorizontal;
 
-    [Tooltip("The vertical force that the player's feet use for jumping, in newtons.")]
+    [Tooltip("The vertical impulse that the player's feet use for jumping, in newtons*sec.")]
     [SerializeField] float jumpImpulse = 5f;
     [SerializeField] InputAction jump;
 

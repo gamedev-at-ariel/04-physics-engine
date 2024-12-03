@@ -12,7 +12,6 @@ public class KeyboardMover : MonoBehaviour
 
 
     [Header("Horizontal movement")]
-
     [SerializeField] InputAction moveHorizontal = new InputAction(type: InputActionType.Button);
 
     [Tooltip("Horizontal acceleration when clicking the arrows, in meters per second^2")]
@@ -30,16 +29,16 @@ public class KeyboardMover : MonoBehaviour
 
     [Header("Vertical movement")]
 
-    [SerializeField] InputAction jump;
+    //[Tooltip("A speed of a standing character towards Earth, in order to activate the colliders")]
+    //[SerializeField] float standSpeed = -0.0001f;
 
     [Tooltip("Vertical acceleration when free-falling, in meters per second^2")]
     [SerializeField] float gravityAcceleration = -10.0f;
 
+    [SerializeField] InputAction jump;
+
     [Tooltip("Vertical speed immediately after jumping, in meters per second")]
     [SerializeField] float jumpSpeed = 10.0f;
-
-    [Tooltip("A speed of a standing character towards Earth, in order to activate the colliders")]
-    [SerializeField] float standSpeed = -0.0001f;
 
 
     [Tooltip("The factor by which the character's horizontal speed is decreased when it jumps.")]
@@ -96,7 +95,8 @@ public class KeyboardMover : MonoBehaviour
     }
 
     void Update() {
-        if (!controller.enabled) return;    
+        if (!controller.enabled) return;   
+        
         controllerIsGrounded = controller.isGrounded;
         if (controllerIsGrounded) {  // character is touching the ground - allow to walk and jump.
             velocity.x += DeltaVelocityWalking();
@@ -107,7 +107,7 @@ public class KeyboardMover : MonoBehaviour
                 velocity.x *= slowDownAtJump;   // decrease horizontal velocity when jumping - for better control
                 //Debug.Log("jumping! velocity.y=" + velocity.y);
             } else {
-                velocity.y = standSpeed;  // a small negative velocity, to keep the character grounded 
+                //velocity.y = standSpeed;  // a small negative velocity, to keep the character grounded 
             }
         } else {  // Character is above the ground - accelerate downwards.
             velocity.y += gravityAcceleration * Time.deltaTime;

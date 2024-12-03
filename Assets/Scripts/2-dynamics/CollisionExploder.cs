@@ -25,13 +25,13 @@ public class CollisionExploder: MonoBehaviour {
         Debug.Log(gameObject.name + " collides with " + collision.collider.name
             + " at velocity " + collision.relativeVelocity + " [m/s], impulse "+ impulse+" [kg*m/s]");
         if (impulse > minImpulseForExplosion) {
-            StartCoroutine(Explosion());
+            Explosion();
         }
     }
 
-    IEnumerator Explosion() {
+    async void Explosion() {
         explosionEffect.SetActive(true);
-        yield return new WaitForSeconds(explosionEffectTime);
+        await Awaitable.WaitForSecondsAsync(explosionEffectTime);
         Destroy(this.gameObject);
     }
 }
