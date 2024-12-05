@@ -11,9 +11,13 @@ public class BereshitController: MonoBehaviour {
     [SerializeField] float dragForceForSlowdown = 0;
 
     [Header("This field is for display only")]
+
     [SerializeField] float distanceToMoon = 0;
+
+    #pragma warning disable 0414
     [SerializeField] bool isSlowingDown = false;
-    
+    #pragma warning restore 0414
+
     private Rigidbody2D rb;
     void Start() {
         rb = GetComponent<Rigidbody2D>();

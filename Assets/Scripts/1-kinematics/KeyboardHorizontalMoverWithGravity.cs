@@ -61,6 +61,7 @@ public class KeyboardHorizontalMoverWithGravity: MonoBehaviour {
         }
         else
         {  // Character is above the ground - accelerate downwards.
+            //velocity.x = 0;
             velocity.y += gravityAcceleration * Time.deltaTime;
         }
 
