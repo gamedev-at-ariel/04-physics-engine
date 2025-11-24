@@ -18,6 +18,7 @@ public class MovingPlatform : MonoBehaviour {
         endPoint = transform.parent.Find("EndPoint");
         if (!endPoint) throw new Exception("No child with name EndPoint!");
         transform.position = startPoint.position;
+        moveFromStartToEnd = true;
     }
 
     void Update() {

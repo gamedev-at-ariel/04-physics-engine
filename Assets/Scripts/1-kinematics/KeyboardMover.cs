@@ -35,7 +35,7 @@ public class KeyboardMover : MonoBehaviour
     [Tooltip("Vertical acceleration when free-falling, in meters per second^2")]
     [SerializeField] float gravityAcceleration = -10.0f;
 
-    [SerializeField] InputAction jump;
+    [SerializeField] InputAction jump = new InputAction(type: InputActionType.Button);
 
     [Tooltip("Vertical speed immediately after jumping, in meters per second")]
     [SerializeField] float jumpSpeed = 10.0f;
@@ -52,13 +52,9 @@ public class KeyboardMover : MonoBehaviour
     void OnValidate() {
         // Provide default bindings for the input actions.
         // Based on answer by DMGregory: https://gamedev.stackexchange.com/a/205345/18261
-        if (jump == null)
-            jump = new InputAction(type: InputActionType.Button);
         if (jump.bindings.Count == 0)
             jump.AddBinding("<Keyboard>/space");
 
-        if (moveHorizontal == null)
-            moveHorizontal = new InputAction(type: InputActionType.Button);
         if (moveHorizontal.bindings.Count == 0)
             moveHorizontal.AddCompositeBinding("1DAxis")
                 .With("Positive", "<Keyboard>/rightArrow")

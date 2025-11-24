@@ -17,7 +17,7 @@ public class KeyboardHorizontalMoverWithGravity: MonoBehaviour {
     [Tooltip("Vertical acceleration when free-falling, in meters per second^2")]
     [SerializeField] float gravityAcceleration = -10.0f;
 
-    [SerializeField] InputAction moveHorizontal;
+    [SerializeField] InputAction moveHorizontal = new InputAction(type: InputActionType.Button);
 
     [Header("These fields are for display only")]
     [SerializeField] bool controllerIsGrounded;
@@ -25,8 +25,6 @@ public class KeyboardHorizontalMoverWithGravity: MonoBehaviour {
     void OnValidate() {
         // Provide default bindings for the input actions.
         // Based on answer by DMGregory: https://gamedev.stackexchange.com/a/205345/18261
-        if (moveHorizontal == null)
-            moveHorizontal = new InputAction(type: InputActionType.Button);
         if (moveHorizontal.bindings.Count == 0)
             moveHorizontal.AddCompositeBinding("1DAxis")
                 .With("Positive", "<Keyboard>/rightArrow")
