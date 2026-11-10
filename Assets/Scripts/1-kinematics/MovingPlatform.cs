@@ -1,5 +1,4 @@
-﻿using UnityEditor.PackageManager;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 /**
@@ -21,8 +20,9 @@ public class MovingPlatform : MonoBehaviour {
         moveFromStartToEnd = true;
     }
 
+    // If FixedUpdate is used, the player moves with the platform.
+    // If Update is used, the player does not move with the platform, as the CharacterController's Move action overrides the Transform movement.
     void Update() {
-        // If Update is used, the player does not move with the platform.
         float deltaX = speed * Time.deltaTime;
         Transform targetPoint = (moveFromStartToEnd ? endPoint : startPoint);
         transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, deltaX);

@@ -10,7 +10,6 @@ public class KeyboardMover : MonoBehaviour
 {
     CharacterController controller;
 
-
     [Header("Horizontal movement")]
     [SerializeField] InputAction moveHorizontal = new InputAction(type: InputActionType.Button);
 
@@ -29,9 +28,6 @@ public class KeyboardMover : MonoBehaviour
 
     [Header("Vertical movement")]
 
-    //[Tooltip("A speed of a standing character towards Earth, in order to activate the colliders")]
-    //[SerializeField] float standSpeed = -0.0001f;
-
     [Tooltip("Vertical acceleration when free-falling, in meters per second^2")]
     [SerializeField] float gravityAcceleration = -10.0f;
 
@@ -39,7 +35,6 @@ public class KeyboardMover : MonoBehaviour
 
     [Tooltip("Vertical speed immediately after jumping, in meters per second")]
     [SerializeField] float jumpSpeed = 10.0f;
-
 
     [Tooltip("The factor by which the character's horizontal speed is decreased when it jumps.")]
     [Range(0, 1f)]
@@ -50,18 +45,16 @@ public class KeyboardMover : MonoBehaviour
     [SerializeField] bool controllerIsGrounded;
 
     void OnValidate() {
-        // Provide default bindings for the input actions.
-        // Based on answer by DMGregory: https://gamedev.stackexchange.com/a/205345/18261
+        // Provide default bindings for the input actions. Based on https://gamedev.stackexchange.com/a/205345/18261
         if (jump.bindings.Count == 0)
             jump.AddBinding("<Keyboard>/space");
-
         if (moveHorizontal.bindings.Count == 0)
             moveHorizontal.AddCompositeBinding("1DAxis")
                 .With("Positive", "<Keyboard>/rightArrow")
                 .With("Negative", "<Keyboard>/leftArrow");
     }
 
-    void Start() {
+    void Awake() {
         controller = GetComponent<CharacterController>();
     }
 
@@ -102,9 +95,7 @@ public class KeyboardMover : MonoBehaviour
                 velocity.y = jumpSpeed;
                 velocity.x *= slowDownAtJump;   // decrease horizontal velocity when jumping - for better control
                 //Debug.Log("jumping! velocity.y=" + velocity.y);
-            } else {
-                //velocity.y = standSpeed;  // a small negative velocity, to keep the character grounded 
-            }
+            } 
         } else {  // Character is above the ground - accelerate downwards.
             velocity.y += gravityAcceleration * Time.deltaTime;
         }

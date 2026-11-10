@@ -21,8 +21,7 @@ public class KeyboardForceAdder : MonoBehaviour {
 
 
     void OnValidate() {
-        // Provide default bindings for the input actions.
-        // Based on answer by DMGregory: https://gamedev.stackexchange.com/a/205345/18261
+        // Provide default bindings for the input actions. Based on https://gamedev.stackexchange.com/a/205345/18261
         if (jump == null)
             jump = new InputAction(type: InputActionType.Button);
         if (jump.bindings.Count == 0)
@@ -38,7 +37,7 @@ public class KeyboardForceAdder : MonoBehaviour {
 
     private Rigidbody rb;
     private TouchDetector td;
-    void Start() {
+    void Awake() {
         rb = GetComponent<Rigidbody>();
         td = GetComponent<TouchDetector>();
     }

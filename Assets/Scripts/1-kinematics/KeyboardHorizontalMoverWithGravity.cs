@@ -11,11 +11,8 @@ public class KeyboardHorizontalMoverWithGravity: MonoBehaviour {
     [Tooltip("Horizontal speed when clicking the arrows, in meters per second")]
     [SerializeField] float speed = 10.0f;
 
-    //[Tooltip("A speed of a standing character towards Earth, in order to activate the colliders")]
-    //[SerializeField] float standSpeed = -0.0001f;
-
     [Tooltip("Vertical acceleration when free-falling, in meters per second^2")]
-    [SerializeField] float gravityAcceleration = -10.0f;
+    [SerializeField] float gravityAcceleration = -9.8f;
 
     [SerializeField] InputAction moveHorizontal = new InputAction(type: InputActionType.Button);
 
@@ -54,12 +51,8 @@ public class KeyboardHorizontalMoverWithGravity: MonoBehaviour {
         controllerIsGrounded = controller.isGrounded;
         if (controllerIsGrounded)
         {  // character is touching the ground: allow to walk
-           //velocity.y = standSpeed;  // a small negative velocity, to keep the character grounded 
             velocity.x = speed * moveHorizontal.ReadValue<float>();
-        }
-        else
-        {  // Character is above the ground - accelerate downwards.
-            //velocity.x = 0;
+        } else {  // Character is above the ground - accelerate downwards.
             velocity.y += gravityAcceleration * Time.deltaTime;
         }
 
