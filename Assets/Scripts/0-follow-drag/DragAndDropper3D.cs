@@ -13,7 +13,7 @@ public class DragAndDropper3D: MonoBehaviour {
     [SerializeField] private float screenZCoordinate;
     
     private Rigidbody rb;
-    private void Start() {
+    private void Awake() {
         rb = GetComponent<Rigidbody>();
     }
     

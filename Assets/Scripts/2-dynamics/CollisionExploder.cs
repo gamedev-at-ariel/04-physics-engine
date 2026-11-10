@@ -13,7 +13,7 @@ public class CollisionExploder: MonoBehaviour {
     [SerializeField] float explosionEffectTime = 0.68f;
 
     private Rigidbody2D rb;
-    void Start() {
+    void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
 
