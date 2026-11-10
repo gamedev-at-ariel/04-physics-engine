@@ -33,10 +33,12 @@ public class KeyboardHorizontalMover: MonoBehaviour {
         moveHorizontal.Disable();
     }
 
-
-    void Start() {
+    private void Awake() {
         controller = GetComponent<CharacterController>();
-        velocity = new Vector3(0, 0, 0); 
+    }
+
+    private void Start() {
+        velocity = new Vector3(0, 0, 0);
     }
 
     void Update() {
